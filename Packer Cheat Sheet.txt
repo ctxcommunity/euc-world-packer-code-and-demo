@@ -1,0 +1,30 @@
+::First time run
+packer.exe init config\HCL2\Windows.pkr.hcl
+packer.exe init config\HCL2\Windows-withUpdates.pkr.hcl
+
+::From a Command Prompt (NOT in PowerShell)
+
+set PACKER_VSPHERE_USER=YourSpecialvSphereAdmin@vsphere.local
+set PACKER_VSPHERE_PASSWORD=YourSuperSecretPasswordforvSphere
+set PACKER_SERVICE_ACCOUNT=YourSpecialDomainAccount
+set PACKER_SERVICE_PASSWORD=YourSuperSecretAcccountforDomainAccount
+set PACKER_SERVICE_DOMAIN=YourSpecialDomain
+set PACKER_WINADMIN_USER=Administrator
+set PACKER_WINADMIN_PASSWORD=YourSuperSecretPasswordfortheLocalAdministratorAccount
+
+::Sample
+::Need location to your vSphere (or other) .json configuration that contains the location of the Windows ISOs and Tools ISO
+::Need location to your VM .json configuration file
+::Need location to your OS build type .pkr.hcl file
+
+Packer.exe build -var-file=config\JSON\LAB\vcenter-2022.json -var-file=config\json\LAB\VMs\server-config-test1.json config\HCL2\Windows.pkr.hcl
+Packer.exe build -var-file=config\JSON\LAB\vcenter-2022.json -var-file=config\json\LAB\VMs\server-config-test1.json config\HCL2\Windows-core-withUpdates.pkr.hcl
+
+To rerun a build you can use the -force switch to have packer automagically delete the VM.
+    If the previous added the VM to the domain, you will want to delete that object from the domain first.
+    Note that the -force command is after the -var-file= file paths and BEFORE the .pkr.hcl file path:
+
+Packer.exe build -var-file=config\JSON\LAB\vcenter-2022.json -var-file=config\json\LAB\VMs\server-config-test1.json -force config\HCL2\Windows.pkr.hcl
+
+
+
