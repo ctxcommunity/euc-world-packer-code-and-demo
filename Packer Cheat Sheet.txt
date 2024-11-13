@@ -26,5 +26,15 @@ To rerun a build you can use the -force switch to have packer automagically dele
 
 Packer.exe build -var-file=config\JSON\LAB\vcenter-2022.json -var-file=config\json\LAB\VMs\server-config-test1.json -force config\HCL2\Windows.pkr.hcl
 
+Packer.exe build -var-file=config\JSON\LAB\vcenter-2025.json -var-file=config\json\LAB\VMs\server-config-test1.json -force config\HCL2\Windows.pkr.hcl
+
+
+Updated 2024 - November 13th -
+Updated and added autounattend.xml files for Windows Server 2025
+	The GVLK key used is for Datacenter
+	Windows Server 2025 would not silently install without the added MSR partition.
+Added vCenter configuration for Windows Server 2025 .iso location
+
+Note: Not all vCenters versions support Windows Server 2025 as a guest type so I would suggest using "windows2019srvNext_64Guest".  If your vCenter does support Windows Server 2025 then use "windows2022srvNext_64Guest". Mind boggling it doesn't have 2025 in the option, I know.
 
 

@@ -1,0 +1,8 @@
+{
+  "vsphere-server": "192.168.224.201",
+  "vsphere-cluster": "LAB",
+  "vsphere-datacenter": "TSP",
+
+  "os_iso_path": "[datastore1] _ISOs/SW_DVD9_Win_Server_STD_CORE_2025_24H2_64Bit_English_DC_STD_MLF_X23-81891.ISO",
+  "vmtools_iso_path": "[datastore1] _ISOs/windows.iso"
+}
